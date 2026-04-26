@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jobs Guide For Siegen Students</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0e0e; --surface: #181818; --card: #1e1e1e; --border: #2e2e2e;
+    --accent: #f5c842; --accent2: #3be8a0; --red: #ff5f5f;
+    --text: #e8e8e8; --muted: #888;
+    --font-head: 'Syne', sans-serif; --font-body: 'Inter', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 14px; line-height: 1.65; }
+
+  .toc { background: #141414; border-bottom: 1px solid var(--border); padding: 10px 28px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .toc a { font-size: 11px; color: var(--muted); text-decoration: none; background: var(--card); border: 1px solid var(--border); padding: 3px 9px; border-radius: 20px; transition: all 0.2s; }
+  .toc a:hover { color: var(--accent); border-color: var(--accent); }
+
+  header { background: linear-gradient(135deg, #1a1a1a 0%, #111 100%); border-bottom: 2px solid var(--accent); padding: 36px 32px 28px; position: relative; overflow: hidden; }
+  header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(245,200,66,0.12) 0%, transparent 70%); border-radius: 50%; }
+  header h1 { font-family: var(--font-head); font-size: clamp(22px, 5vw, 40px); font-weight: 800; line-height: 1.1; color: #fff; }
+  header h1 span { color: var(--accent); }
+  .header-sub { margin-top: 14px; color: #bbb; font-size: 13px; max-width: 640px; line-height: 1.7; }
+  .header-sub .author { color: var(--accent2); font-weight: 600; }
+  .header-note { margin-top: 10px; background: rgba(245,200,66,0.07); border-left: 3px solid var(--accent); padding: 10px 14px; border-radius: 0 6px 6px 0; font-size: 12px; color: #ccc; max-width: 640px; }
+
+  .main { padding: 0 24px 60px; display: flex; flex-direction: column; gap: 28px; }
+
+  section { scroll-margin-top: 20px; }
+  .section-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .section-head .icon { width: 34px; height: 34px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .section-head h2 { font-family: var(--font-head); font-size: 18px; font-weight: 800; color: #fff; }
+  .section-head .badge { margin-left: auto; background: var(--border); color: var(--muted); font-size: 11px; padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
+  hr.divider { border: none; border-top: 1px solid var(--border); margin: 4px 0 18px; }
+
+  .box-yellow { background: #1a1200; border: 1.5px solid var(--accent); border-radius: 10px; padding: 18px 22px; margin-bottom: 16px; }
+  .box-yellow h3 { font-family: var(--font-head); font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .box-green { background: #0e1a0e; border: 1.5px solid var(--accent2); border-radius: 10px; padding: 14px 18px; margin-bottom: 14px; font-size: 13px; color: #b0f0d0; }
+  .box-green strong { color: var(--accent2); }
+  .box-blue { background: #0e0e1a; border: 1px solid #2a2a5a; border-radius: 10px; padding: 14px 18px; font-size: 13px; color: #9090d0; margin-bottom: 14px; }
+  .box-blue strong { color: #80bfff; }
+  .box-red { background: #1a0e0e; border: 1px solid #5a2a2a; border-radius: 10px; padding: 14px 18px; font-size: 13px; color: #d09090; margin-bottom: 14px; }
+  .seasonal { background: linear-gradient(135deg, #0f1a2a, #0e1520); border: 1px solid #2a4a7a; border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #90c0f0; margin-bottom: 12px; }
+
+  .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
+  .rule-item { background: rgba(245,200,66,0.06); border-radius: 6px; padding: 11px 13px; }
+  .rule-item .rule-label { color: var(--accent); font-weight: 600; font-size: 11px; margin-bottom: 3px; letter-spacing: 0.3px; }
+  .rule-item .rule-val { color: var(--text); font-size: 12.5px; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(265px, 1fr)); gap: 11px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card .card-name { font-family: var(--font-head); font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 4px; }
+  .card .card-address { font-size: 12px; color: var(--muted); margin-bottom: 8px; padding-left: 16px; position: relative; }
+  .card .card-address::before { content: '📍'; font-size: 10px; position: absolute; left: 0; top: 1px; }
+  .card .card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 20px; letter-spacing: 0.3px; }
+  .tag-green { background: rgba(59,232,160,0.12); color: var(--accent2); border: 1px solid rgba(59,232,160,0.25); }
+  .tag-yellow { background: rgba(245,200,66,0.12); color: var(--accent); border: 1px solid rgba(245,200,66,0.25); }
+  .tag-red { background: rgba(255,95,95,0.12); color: var(--red); border: 1px solid rgba(255,95,95,0.25); }
+  .tag-blue { background: rgba(80,160,255,0.12); color: #80bfff; border: 1px solid rgba(80,160,255,0.25); }
+  .tag-purple { background: rgba(180,120,255,0.12); color: #c490ff; border: 1px solid rgba(180,120,255,0.25); }
+
+  .apply-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px; }
+  .apply-card .company { font-family: var(--font-head); font-weight: 800; font-size: 15px; color: var(--accent); margin-bottom: 5px; }
+  .apply-card p { font-size: 13px; color: var(--text); margin-bottom: 5px; }
+  .apply-card a { display: inline-block; background: var(--accent); color: #000; font-weight: 600; font-size: 11px; letter-spacing: 0.4px; padding: 5px 13px; border-radius: 20px; text-decoration: none; margin-top: 5px; transition: opacity 0.2s; }
+  .apply-card a:hover { opacity: 0.85; }
+  .apply-card .note { font-size: 11px; color: var(--muted); margin-top: 6px; }
+  .apply-card.highlight { border-color: var(--accent2); }
+  .apply-card.highlight .company { color: var(--accent2); }
+
+  .tip-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .tip-list li { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 11px 14px; font-size: 13px; display: flex; align-items: flex-start; gap: 10px; }
+  .tip-list li .tip-icon { flex-shrink: 0; font-size: 15px; }
+  .tip-list li a { color: var(--accent); text-decoration: none; }
+  .tip-list li a:hover { text-decoration: underline; }
+  .tip-list li strong { color: #fff; }
+
+  .agency-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+  .agency-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 15px; }
+  .agency-card .ag-name { font-family: var(--font-head); font-weight: 700; font-size: 13px; color: var(--accent); margin-bottom: 4px; }
+  .agency-card .ag-addr { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+  .agency-card .ag-desc { font-size: 12px; color: #ccc; margin-bottom: 5px; }
+  .agency-card a { font-size: 11px; color: var(--accent2); text-decoration: none; }
+
+  .portal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; }
+  .portal-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 13px; font-size: 12.5px; display: flex; align-items: flex-start; gap: 8px; }
+  .portal-item .pi { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .portal-item a { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+  .sub-label { font-family: var(--font-head); font-weight: 700; font-size: 12px; color: var(--accent); margin: 14px 0 8px; letter-spacing: 0.5px; text-transform: uppercase; }
+
+  footer { text-align: center; padding: 28px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); }
+  footer span { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Jobs Guide For<br><span>Siegen Students</span></h1>
+  <div class="header-sub">
+    This document was put together by <span class="author">Anas Hussain Khan</span>, a student at the University of Siegen. I tried to gather everything useful into one place — information collected from seniors, fellow students, and personal research. There is plenty of room for improvement, some links may not work or may not lead to exactly the right page, and some details may have changed since this was written. I apologise for any inaccuracies and I did my best to verify everything. Use this as a starting point, not as a final authority.
+  </div>
+  <div class="header-note">
+    Documents come first — sort those before anything else. Then go through the sections in order, from the easiest jobs to reach to the ones that need more planning. Do not rely on this guide alone or follow it blindly — always verify details yourself. Best of luck.
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#docs">Documents First</a>
+  <a href="#rules">Work Rules</a>
+  <a href="#apps">Apps — Zenjob & More</a>
+  <a href="#agencies">Staffing Agencies</a>
+  <a href="#warehouse">Warehouse & Logistics</a>
+  <a href="#production">Production Worker Jobs</a>
+  <a href="#supermarkets">Supermarkets</a>
+  <a href="#cleaning">Cleaning Jobs</a>
+  <a href="#restaurants">Restaurants</a>
+  <a href="#cafes">Cafés</a>
+  <a href="#bars">Bars & Clubs</a>
+  <a href="#seasonal">Seasonal Jobs</a>
+  <a href="#online">Online / Remote</a>
+  <a href="#babysit">Babysitting</a>
+  <a href="#other">Other Employers</a>
+  <a href="#portals">All Job Portals</a>
+  <a href="#tips">Pro Tips</a>
+</nav>
+
+<div class="main">
+
+<!-- ═══════════ DOCUMENTS ═══════════ -->
+<section id="docs">
+  <div class="section-head">
+    <div class="icon">📋</div>
+    <h2>Documents You Need — Sort These First</h2>
+    <span class="badge">Before applying anywhere</span>
+  </div>
+  <hr class="divider">
+  <div class="box-yellow">
+    <h3>⚠️ Get These Sorted in Your First Weeks</h3>
+    <p style="font-size:13px;color:#ccc">Without the right documents you cannot legally work in Germany. Some of these take time to arrive by post — start early.</p>
+  </div>
+  <ul class="tip-list">
+    <li>
+      <span class="tip-icon">🏠</span>
+      <div><strong>Anmeldung (Address Registration) — Do This First</strong><br>Register your address at the Bürgerbüro / Einwohnermeldeamt in Siegen. You need your passport, visa, and the rental contract signed by your landlord (Wohnungsgeberbestätigung). Everything else — your Steuer-ID, social security number — follows from this. Book an appointment at <a href="https://www.siegen.de" target="_blank">siegen.de</a></div>
+    </li>
+    <li>
+      <span class="tip-icon">🔢</span>
+      <div><strong>Steuer-ID (Tax Identification Number)</strong><br>An 11-digit number sent to your registered address automatically, usually within 2–4 weeks of Anmeldung. Every employer will ask for this. If it gets lost or delayed, you can request it again at: <a href="https://www.bzst.de/DE/Privatpersonen/SteuerlicheIdentifikationsnummer/steuerlicheidentifikationsnummer_node.html" target="_blank">bzst.de</a></div>
+    </li>
+    <li>
+      <span class="tip-icon">🏥</span>
+      <div><strong>Krankenversicherungsnummer (Health Insurance Number)</strong><br>Your public health insurance card number from your Krankenkasse. Enrol with TK (Techniker Krankenkasse), AOK, Barmer, or DAK as soon as you arrive — this is mandatory in Germany. Employers need this number to register you on payroll. Your insurance card will show the number once issued.</div>
+    </li>
+    <li>
+      <span class="tip-icon">🆔</span>
+      <div><strong>Sozialversicherungsnummer (Social Security Number)</strong><br>Issued the first time you start a job with social insurance contributions. Your employer registers you for the first time. You can also request it proactively at <a href="https://www.drv.de" target="_blank">drv.de</a> if you need it before starting work.</div>
+    </li>
+    <li>
+      <span class="tip-icon">🎓</span>
+      <div><strong>Immatrikulationsbescheinigung (Enrolment Certificate)</strong><br>Download this from your Uni Siegen student portal every semester. Needed for Zenjob, staffing agencies, university jobs, and most student job applications. Always keep a fresh printed copy in your bag.</div>
+    </li>
+    <li>
+      <span class="tip-icon">🏦</span>
+      <div><strong>German Bank Account (IBAN)</strong><br>Required for salary payments. Open one at Sparkasse Siegen, Deutsche Bank, or a free online bank such as N26, DKB, or Commerzbank. Without a German IBAN, you cannot receive a German salary.</div>
+    </li>
+    <li>
+      <span class="tip-icon">📱</span>
+      <div><strong>German Phone Number</strong><br>Required on all job applications and CVs. Never use a foreign number on a German application — it reduces your chances significantly. Cheapest options: Aldi Talk or Lidl Connect for around €10 including credit. O2 and Telekom contracts are also available.</div>
+    </li>
+  </ul>
+</section>
+
+<!-- ═══════════ WORK RULES ═══════════ -->
+<section id="rules">
+  <div class="section-head">
+    <div class="icon">⚖️</div>
+    <h2>Work Rules — Know Your Limits</h2>
+    <span class="badge">Non-EU students especially</span>
+  </div>
+  <hr class="divider">
+  <div class="rules-grid">
+    <div class="rule-item">
+      <div class="rule-label">Max hours during semester</div>
+      <div class="rule-val">20 hours per week — do not exceed this while lectures are running</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-label">Annual work limit (non-EU)</div>
+      <div class="rule-val">140 full days or 280 half-days per calendar year (updated March 2024)</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-label">Semester break</div>
+      <div class="rule-val">Full-time work (40h/week) is allowed during Semesterferien — use this wisely</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-label">Minijob monthly limit</div>
+      <div class="rule-val">Up to €603/month (as of Jan 2026) — no income tax, no social contributions</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-label">Minimum wage</div>
+      <div class="rule-val">€13.90 per hour (2025). Anything less is illegal — you can report it</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-label">HiWi / SHK at Uni</div>
+      <div class="rule-val">Student assistant roles at Uni Siegen do NOT count toward your 140-day annual limit</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-label">Self-employment</div>
+      <div class="rule-val">Non-EU students: not permitted without prior written approval from Ausländerbehörde</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-label">CV requirements</div>
+      <div class="rule-val">Always include: German phone number, Siegen address, degree name, university name</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ APPS ═══════════ -->
+<section id="apps">
+  <div class="section-head">
+    <div class="icon">⚡</div>
+    <h2>Job Apps — Easiest Way to Start</h2>
+    <span class="badge">No CV needed · App-based shifts</span>
+  </div>
+  <hr class="divider">
+  <div class="apply-card highlight" style="margin-bottom:12px">
+    <div class="company">Zenjob — Highly Recommended for International Students</div>
+    <p><strong>What it is:</strong> Germany's biggest student job app. Register once, then book individual shifts directly in the app — no CV required, no interview, no application letters. One tap to confirm a shift. You receive 50% of your pay within days of finishing a shift.</p>
+    <p><strong>Available roles:</strong> Warehouse, cashier, waiter/waitress, bar assistant, shelf stacking, event staff, office helper, promoter, delivery driver</p>
+    <p><strong>Language:</strong> Many shifts available for English speakers. You complete a short language test in the app which unlocks suitable shifts.</p>
+    <p><strong>Pay:</strong> €13.90–€16/hr on average. Paid quickly and reliably.</p>
+    <p><strong>Coverage:</strong> Active in 40+ German cities. Siegen may have fewer listings than larger cities — expand your radius to include Dortmund, Cologne, or Wuppertal for more options, especially during semester breaks.</p>
+    <p><strong>Important limit:</strong> As a short-term employee on Zenjob you can only work 70 working days per year through this contract type (separate from your 140-day visa limit). As a Werkstudent on Zenjob the standard 20h/week semester rule applies instead, which is more sustainable long-term.</p>
+    <p><strong>What you need to register:</strong> Immatrikulationsbescheinigung + Steuer-ID + Sozialversicherungsnummer + German IBAN + valid passport or ID. Registration takes approximately one week — sign up early rather than waiting until you urgently need income.</p>
+    <a href="https://www.zenjob.com/en/jobs/" target="_blank">Register on Zenjob →</a>
+    <div class="note">Download the app by searching "Zenjob" on iOS or Android · Complete all in-app training modules to unlock more job types</div>
+  </div>
+  <div class="apply-card" style="margin-bottom:12px">
+    <div class="company">HeyJobs</div>
+    <p>Fast-apply job platform. Many positions require no CV at all. Well suited for minijobs, warehouse, and service roles in Siegen. Search by filtering "Minijob" + "Siegen" for relevant results.</p>
+    <a href="https://www.heyjobs.co/" target="_blank">heyjobs.co →</a>
+    <div class="note">Some applications take under two minutes to complete — one of the fastest platforms available</div>
+  </div>
+  <div class="apply-card">
+    <div class="company">Jobmenge.de — One-Off Student Tasks</div>
+    <p>Connects students with single-occasion jobs such as moving help, event work, production assistance, packaging, and market stalls. Register and get notified of nearby jobs. Flexible and good for filling free days without a fixed commitment.</p>
+    <a href="https://www.jobmenge.de" target="_blank">jobmenge.de →</a>
+    <div class="note">Reported pay of €15–20/hr per shift — useful alongside a regular job</div>
+  </div>
+</section>
+
+<!-- ═══════════ STAFFING AGENCIES ═══════════ -->
+<section id="agencies">
+  <div class="section-head">
+    <div class="icon">🏢</div>
+    <h2>Staffing Agencies in Siegen</h2>
+    <span class="badge">Walk in with CV · Fastest route to local factory jobs</span>
+  </div>
+  <hr class="divider">
+  <div class="box-red">
+    <strong>How Zeitarbeit (temp agency) work operates:</strong> You register with the agency, they place you at partner companies — local factories, DPD, logistics centres, supermarkets, Bison Polymers, and more. The agency is your legal employer, handles your payroll, tax, and contract. This is one of the fastest ways to get placed in Siegen. Walk in on a weekday morning with your documents and CV. Tell them: <em>"Ich suche eine Stelle als Produktionshelfer oder Lagermitarbeiter, Teilzeit oder Minijob."</em>
+  </div>
+  <div class="agency-grid">
+    <div class="agency-card">
+      <div class="ag-name">Personalunion Siegen ⭐</div>
+      <div class="ag-addr">📍 Friedrichstraße 23, 57072 Siegen · Mon–Fri 7:30–17:00</div>
+      <div class="ag-desc">Local Siegen agency with strong reviews. Fast placement in industry, logistics, and production roles. Walk in or call directly. Tel: 0271 387870</div>
+      <a href="https://personalunion.de" target="_blank">personalunion.de →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">perso concept GmbH ⭐</div>
+      <div class="ag-addr">📍 Siegen city — confirmed active 2026</div>
+      <div class="ag-desc">Siegen-based agency specialising in temporary employment. Covers industry, production, logistics, and service. International-friendly reputation among local students.</div>
+      <a href="https://persoconcept.de" target="_blank">persoconcept.de →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">persona data Siegen</div>
+      <div class="ag-addr">📍 Fürst-Johann-Moritz-Str. 14, 57072 Siegen · Tel: 0271 234638-0</div>
+      <div class="ag-desc">Over 35 years in business. Strong track record placing workers in industry, logistics, and production in Siegen and Netphen. Personal service.</div>
+      <a href="https://www.persona-data-siegen.de" target="_blank">persona-data-siegen.de →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">Adecco — Siegen</div>
+      <div class="ag-addr">📍 Sandstraße 15, 57072 Siegen</div>
+      <div class="ag-desc">One of Germany's largest temp agencies. Manages Amazon and DHL staffing contracts. Good for warehouse and logistics roles in the region.</div>
+      <a href="https://www.adecco.de/standorte/siegen-nordrhein-westfalen/" target="_blank">adecco.de →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">Persona Service — Siegen</div>
+      <div class="ag-addr">📍 Koblenzer Straße 29, 57072 Siegen</div>
+      <div class="ag-desc">National agency with a confirmed Siegen office. Covers service, logistics, and commercial placements. Walk in on weekday mornings.</div>
+      <a href="https://www.persona.de/niederlassungen/niederlassung/siegen" target="_blank">persona.de →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">Manpower — Siegen</div>
+      <div class="ag-addr">📍 Marburger Str. 27, 57072 Siegen · Tel: 0271 3376960</div>
+      <div class="ag-desc">Global agency with strong NRW presence. Good for industrial, production, and logistics placements in Siegen and surrounding areas.</div>
+      <a href="https://www.manpower.de/de/bewerber/zeitarbeit/zeitarbeit-siegen" target="_blank">manpower.de →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">EXPERTS &amp; TALENTS — Siegen</div>
+      <div class="ag-addr">📍 Sandstraße 1, 57072 Siegen · Mon–Fri 8:00–17:00</div>
+      <div class="ag-desc">Modern local agency. Applications accepted by WhatsApp and email (siegen@experts-talents.de). Covers technical, commercial, and industrial roles in Siegen and Netphen.</div>
+      <a href="https://www.experts-talents.de/standorte/siegen/" target="_blank">experts-talents.de →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">Persoplan — Siegen</div>
+      <div class="ag-addr">📍 Am Bahnhof 4-12, 57072 Siegen · Tel: 0271/7030680</div>
+      <div class="ag-desc">Located at the Siegen Bahnhof. Confirmed placements in logistics, production, and service roles throughout the Siegen area.</div>
+      <a href="https://www.persoplan.de" target="_blank">persoplan.de →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">START NRW — Siegen</div>
+      <div class="ag-addr">📍 Sandstraße 26, 57072 Siegen · Tel: 0271/337170</div>
+      <div class="ag-desc">NRW-focused agency with a confirmed Siegen office. Strong in light industrial, logistics, and helper roles across the region.</div>
+      <a href="https://www.start-nrw.de" target="_blank">start-nrw.de →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">Timepartner — Siegen</div>
+      <div class="ag-addr">📍 Active in the Siegen area</div>
+      <div class="ag-desc">Nationwide agency with NRW coverage. Known for industrial and logistics placements. Worth registering alongside other agencies.</div>
+      <a href="https://www.timepartner.com/ueber-uns/standort/106_siegen" target="_blank">timepartner.com →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">Randstad — Nearest: Herborn</div>
+      <div class="ag-addr">📍 Meynardweg 14, 35745 Herborn (~30 min from Siegen)</div>
+      <div class="ag-desc">Europe's largest temp agency. Closest office to Siegen is in Herborn. Useful for production and logistics placements across the wider region.</div>
+      <a href="https://www.randstad.de/standorte/randstad-siegen_3631/" target="_blank">randstad.de →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">AlphaConsult Premium — Siegen</div>
+      <div class="ag-addr">📍 Siegen · Tel: 0271–233706-11 · info.siegen@alphaconsult-premium.org</div>
+      <div class="ag-desc">Confirmed Siegen branch placing production and machine operators at companies in Kreuztal, Netphen, and Siegen. Provides work clothing. Can contact directly by phone or email.</div>
+      <a href="https://www.alphaconsult.de" target="_blank">alphaconsult.de →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ WAREHOUSE ═══════════ -->
+<section id="warehouse">
+  <div class="section-head">
+    <div class="icon">📦</div>
+    <h2>Warehouse &amp; Logistics Jobs</h2>
+    <span class="badge">No German required · Physical work · Good pay</span>
+  </div>
+  <hr class="divider">
+  <div class="card-grid">
+    <div class="apply-card">
+      <div class="company">BISON Polymers GmbH — Siegen-Weidenau</div>
+      <p>Germany's only nitrile disposable glove manufacturer, based directly in Siegen-Weidenau. Many students from the university already work here. The company is actively growing and regularly hires production and warehouse helpers. Very international-friendly working environment. Free parking available. Located near the Weidenau Busbahnhof.</p>
+      <p><strong>Address:</strong> Breite Straße 17, 57076 Siegen-Weidenau</p>
+      <p><strong>Apply via email:</strong> recruiting@bison-polymers.com </p>
+      <a href="https://bison-polymers.com/en/career-2/" target="_blank">Bison Polymers Careers →</a>
+    </div>
+    <div class="apply-card">
+      <div class="company">Amazon — Wenden (Gerlingen) CLOSE TO SIEGEN</div>
+      <p>Amazon has a confirmed logistics and delivery station at <strong>Eisenstraße 2, 57482 Wenden</strong> — in the Gerlingen industrial area, approximately 25 minutes from Siegen. This is the closest Amazon location to you. No CV or prior experience required. Both full-time and part-time shifts are available.</p>
+      <p><strong>Shuttle service:</strong> Amazon provides a shuttle bus from Kreuztal Bahnhof / Siegen to this site. Timetables are shared after successful registration.</p>
+      <p><strong>Also apply via:</strong> Adecco, who manages staffing contracts for this site — see Section 4.</p>
+      <a href="https://www.amazon.jobs/content/en/teams/fulfillment-and-operations/germany" target="_blank">Amazon Jobs Germany →</a>
+      <div class="note">Include German address + degree + German phone number in your application</div>
+    </div>
+    <div class="apply-card">
+      <div class="company">DPD — Wilnsdorf Depot</div>
+      <p>DPD has a parcel sorting depot at <strong>Oberhausener Straße 9, 57234 Wilnsdorf</strong>, just outside Siegen. Early-morning sorting shifts available. Role: Mitarbeiter Umschlag / Lager. Physical work involving sorting, loading, and unloading parcels.</p>
+      <a href="https://www.dpd.com/de/en/karriere/aktuelle-stellenangebote-und-jobs/" target="_blank">DPD Karriere →</a>
+      <div class="note">Also search "DPD Wilnsdorf" on Indeed.de for current listings</div>
+    </div>
+    <div class="apply-card">
+      <div class="company">Deutsche Post / DHL — Siegen</div>
+      <p>Deutsche Post has a depot in Siegen and regularly hires Aushilfe helpers for parcel sorting and delivery support at approximately €17.26/hr. Sorting roles do not require a driver's licence. One of the best-paying options for student hours.</p>
+      <a href="https://jobs.dhl.com/de/de" target="_blank">DHL / Post Jobs →</a>
+      <div class="note">Search "Siegen Aushilfe Paketzusteller" on their portal or on Indeed.de</div>
+    </div>
+    <div class="apply-card">
+      <div class="company">FedEx</div>
+      <p>FedEx has no sorting hub in Siegen itself. The nearest stations are in Frankfurt and Cologne. Worth applying online if commuting is possible or as a semester-break option in a larger city.</p>
+      <a href="https://careers.fedex.com/de/" target="_blank">FedEx Careers DE →</a>
+      <div class="note">Search "Paketsortierer" or "Lager" filtered to NRW on their careers page</div>
+    </div>
+    <div class="apply-card">
+      <div class="company">Dornseifer — Food Production Logistics (Wenden)</div>
+      <p>Unternehmensgruppe Dornseifer operates a food production and logistics centre in Wenden, near the Amazon site. They hire Produktionshelfer and logistics workers in both full-time and part-time contracts. No experience required for helper roles.</p>
+      <div class="note">Search "Dornseifer Wenden Produktionshelfer" on Indeed.de or karriere-suedwestfalen.de</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PRODUCTION ═══════════ -->
+<section id="production">
+  <div class="section-head">
+    <div class="icon">🏭</div>
+    <h2>Production Worker &amp; Factory Jobs</h2>
+    <span class="badge">Siegen is an industrial region · Many options</span>
+  </div>
+  <hr class="divider">
+  <div class="box-blue">
+    <strong>Siegen's industrial background:</strong> The Siegen-Wittgenstein district has a long history in steel, metalworking, automotive parts, plastics, and packaging. There are dozens of factories within 20–30 minutes of Siegen city centre that regularly hire Produktionshelfer (production helpers), Montagehelfer (assembly helpers), and Lagermitarbeiter (warehouse workers). No prior experience is needed for most of these entry-level roles.
+  </div>
+
+  <div class="sub-label">Companies Confirmed to Hire in the Siegen Area</div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-name">SkinIdent GmbH</div>
+      <div class="card-address">57080 Siegen (~6 km from city centre)</div>
+      <div class="card-tags"><span class="tag tag-blue">Cosmetics / skincare production</span><span class="tag tag-yellow">Apply via KSW or Indeed</span></div>
+    </div>
+    <div class="card">
+      <div class="card-name">Messer Industriegase GmbH</div>
+      <div class="card-address">57074 Siegen (~7 km)</div>
+      <div class="card-tags"><span class="tag tag-blue">Industrial gases</span><span class="tag tag-yellow">Apply directly or via agency</span></div>
+    </div>
+    <div class="card">
+      <div class="card-name">Bresi GmbH</div>
+      <div class="card-address">57080 Siegen (~14 km)</div>
+      <div class="card-tags"><span class="tag tag-blue">Local manufacturing</span><span class="tag tag-yellow">Search on Indeed / KSW</span></div>
+    </div>
+    <div class="card">
+      <div class="card-name">Hess &amp; Nies GmbH &amp; Co. KG</div>
+      <div class="card-address">57299 Burbach (Siegerland) — ~20 min</div>
+      <div class="card-tags"><span class="tag tag-blue">Plastics / assembly</span><span class="tag tag-yellow">Apply via Indeed.de</span></div>
+    </div>
+    <div class="card">
+      <div class="card-name">eltherm GmbH</div>
+      <div class="card-address">57299 Burbach — ~20 min</div>
+      <div class="card-tags"><span class="tag tag-blue">Heating systems production</span><span class="tag tag-yellow">Apply via Indeed.de</span></div>
+    </div>
+    <div class="card">
+      <div class="card-name">Unternehmensgruppe Henrich</div>
+      <div class="card-address">57299 Burbach-Niederdresselndorf — ~20 min</div>
+      <div class="card-tags"><span class="tag tag-blue">Metal / production</span><span class="tag tag-yellow">Search on Indeed</span></div>
+    </div>
+    <div class="card">
+      <div class="card-name">Theodor Stephan KG GmbH</div>
+      <div class="card-address">57299 Burbach-Niederdresselndorf — ~20 min</div>
+      <div class="card-tags"><span class="tag tag-blue">Industrial production</span><span class="tag tag-yellow">Apply via KSW or Indeed</span></div>
+    </div>
+    <div class="card">
+      <div class="card-name">Polartherm Flachglas GmbH</div>
+      <div class="card-address">57250 Netphen — ~15 min</div>
+      <div class="card-tags"><span class="tag tag-blue">Flat glass production</span><span class="tag tag-yellow">Search on Indeed.de</span></div>
+    </div>
+    <div class="card">
+      <div class="card-name">Unternehmensgruppe Friedhelm Dornseifer</div>
+      <div class="card-address">57250 Netphen — ~15 min</div>
+      <div class="card-tags"><span class="tag tag-blue">Food production</span><span class="tag tag-yellow">Apply on karriere-suedwestfalen.de</span></div>
+    </div>
+    <div class="card">
+      <div class="card-name">Lucaro GmbH</div>
+      <div class="card-address">57290 Neunkirchen — ~10 min</div>
+      <div class="card-tags"><span class="tag tag-blue">Local manufacturer</span><span class="tag tag-yellow">Search on KSW or Indeed</span></div>
+    </div>
+    <div class="card">
+      <div class="card-name">Lindenschmidt KG</div>
+      <div class="card-address">57223 Kreuztal-Krombach — ~15 min</div>
+      <div class="card-tags"><span class="tag tag-blue">Metal / production</span><span class="tag tag-yellow">Apply via karriere-suedwestfalen.de</span></div>
+    </div>
+    <div class="card">
+      <div class="card-name">ECO-Entgratungscenter GmbH</div>
+      <div class="card-address">57223 Kreuztal — ~15 min</div>
+      <div class="card-tags"><span class="tag tag-blue">Metal processing</span><span class="tag tag-yellow">Apply via staffing agencies</span></div>
+    </div>
+    <div class="card">
+      <div class="card-name">Glosec GmbH</div>
+      <div class="card-address">57072 Siegen</div>
+      <div class="card-tags"><span class="tag tag-blue">Lagerhelfer / Lagerist roles</span><span class="tag tag-yellow">Apply on Indeed.de</span></div>
+    </div>
+    <div class="card">
+      <div class="card-name">Lidl Logistikzentrum — Burbach</div>
+      <div class="card-address">57299 Burbach — ~20 min</div>
+      <div class="card-tags"><span class="tag tag-blue">Logistics / Kommissionierer</span><span class="tag tag-yellow">Apply via lidl.de/karriere</span></div>
+    </div>
+  </div>
+
+  <div class="sub-label" style="margin-top:18px">How to Find More Production Jobs</div>
+  <ul class="tip-list">
+    <li><span class="tip-icon">🔍</span><div><strong>Best search keywords to use:</strong> "Produktionshelfer Siegen", "Lagermitarbeiter Siegen", "Montagehelfer Siegen", "Aushilfe Produktion Siegen", "Helfer Verpackung Siegen", "Lagerhelfer Siegen"</div></li>
+    <li><span class="tip-icon">🌐</span><div><strong>Best portals for production jobs in this region:</strong> <a href="https://www.karriere-suedwestfalen.de/stellenangebote-produktionshelfer-in-siegen" target="_blank">karriere-suedwestfalen.de</a>, <a href="https://de.indeed.com/q-produktionshelfer-l-siegen-jobs.html" target="_blank">Indeed.de</a>, <a href="https://www.57jobs.de" target="_blank">57jobs.de</a></div></li>
+    <li><span class="tip-icon">🏢</span><div><strong>Best strategy:</strong> Register with 2–3 agencies from Section 4 and tell them you want Produktionshelfer or Lagermitarbeiter work. Agencies like persona data, perso concept, and AlphaConsult already have active contacts with these local factories and can place you within days.</div></li>
+  </ul>
+</section>
+
+<!-- ═══════════ SUPERMARKETS ═══════════ -->
+<section id="supermarkets">
+  <div class="section-head">
+    <div class="icon">🛒</div>
+    <h2>Supermarkets — Reliable Minijobs</h2>
+    <span class="badge">Walk-in or apply online · Near campus</span>
+  </div>
+  <hr class="divider">
+  <div class="box-green">
+    <strong>Walk-in tip:</strong> Visit your nearest supermarket on a weekday between 2–4pm. Ask to speak to the Filialleiter (store manager). Say: <em>"Ich suche einen Minijob oder eine Aushilfsstelle. Haben Sie gerade etwas frei?"</em> — bring a printed CV. Cashier roles (Kassierer) need basic German. Shelf stacking (Warenverräumung) and cleaning roles require much less.
+  </div>
+  <div class="card-grid">
+    <div class="apply-card">
+      <div class="company">REWE — Siegen</div>
+      <p>Multiple stores in Siegen (57080 and Siegen-Weidenau). Regular Minijob cashier and warehouse listings. One of the most stable retail employers in Germany.</p>
+      <a href="https://karriere.rewe.de/" target="_blank">REWE Karriere →</a>
+      <div class="note">Also search "REWE Siegen Minijob" on Indeed.de</div>
+    </div>
+    <div class="apply-card">
+      <div class="company">PENNY — Siegen / Wilnsdorf</div>
+      <p>Part of REWE Group. Branches in Siegen (57080) and Wilnsdorf. Good entry point — confirmed Minijob cashier and cleaning listings found.</p>
+      <a href="https://www.penny.de/karriere" target="_blank">PENNY Karriere →</a>
+      <div class="note">Also search "PENNY Siegen Minijob" on Indeed.de</div>
+    </div>
+    <div class="apply-card">
+      <div class="company">ALDI Nord — Siegen</div>
+      <p>Store at Leimbachstraße 185, 57074 Siegen. Among the best-paying retail employers, starting from €14/hr. Cashier helper and stockroom Aushilfe roles regularly available.</p>
+      <a href="https://www.aldi-nord.de/karriere.html" target="_blank">ALDI Nord Karriere →</a>
+    </div>
+    <div class="apply-card">
+      <div class="company">Lidl — Siegen area</div>
+      <p>Multiple Lidl stores around Siegen. Pays approximately €15/hr for Minijob shelf stacking and cashier positions. Apply online or walk in to your nearest store.</p>
+      <a href="https://www.lidl.de/de/karriere" target="_blank">Lidl Karriere →</a>
+    </div>
+    <div class="apply-card">
+      <div class="company">EDEKA / Netto — Siegen</div>
+      <p>EDEKA and its discount brand Netto have multiple Siegen locations. Good for shelf stacking and cleaning helper roles with flexible hours.</p>
+      <a href="https://verbund.edeka/karriere" target="_blank">EDEKA Karriere →</a>
+    </div>
+    <div class="apply-card">
+      <div class="company">Kaufland — Siegen</div>
+      <p>Large hypermarket with more positions than smaller stores, making it easier to get a contract. Good for warehouse and stock-room Minijob roles.</p>
+      <a href="https://jobs.kaufland.de/" target="_blank">Kaufland Jobs →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CLEANING ═══════════ -->
+<section id="cleaning">
+  <div class="section-head">
+    <div class="icon">🧹</div>
+    <h2>Cleaning Jobs — Reinigungskraft</h2>
+    <span class="badge">Low language barrier · Flexible hours</span>
+  </div>
+  <hr class="divider">
+  <div class="box-green">
+    <strong>Why cleaning works well for students:</strong> Very low German language requirement, flexible scheduling (often early morning or late evening), and a steady income. You can find private household cleaning through platforms or commercial cleaning through companies. Both work well alongside university study.
+  </div>
+
+  <div class="sub-label">Cleaning Companies in Siegen — Apply Directly</div>
+  <div class="agency-grid" style="margin-bottom:18px">
+    <div class="agency-card">
+      <div class="ag-name">Völkel GmbH — Gebäudereinigung ⭐</div>
+      <div class="ag-addr">📍 Bahnhof Weidenau 6, 57076 Siegen-Weidenau · Tel: 0271 770028-0</div>
+      <div class="ag-desc">One of Siegen's largest cleaning companies. Hires for building, glass, and industrial cleaning. Apply via their website or call directly.</div>
+      <a href="https://www.voelkel-siegen.de/" target="_blank">voelkel-siegen.de →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">Quicky Glas- und Gebäudereinigung GmbH</div>
+      <div class="ag-addr">📍 Siegen — confirmed listings on Indeed</div>
+      <div class="ag-desc">Confirmed Minijob and Teilzeit listings for Gebäudereiniger roles. Office, glass, and maintenance cleaning. Apply via Indeed or directly.</div>
+      <a href="https://de.indeed.com/q-geb%C3%A4udereinigung-l-siegen-jobs.html" target="_blank">Search on Indeed →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">Th. Kramer Gebäudereinigung GmbH</div>
+      <div class="ag-addr">📍 Siegen area — confirmed active</div>
+      <div class="ag-desc">Minijob and Teilzeit listings confirmed for Reinigungskraft roles. Apply via Indeed.de or contact directly.</div>
+      <a href="https://de.indeed.com/q-geb%C3%A4udereinigung-l-siegen-jobs.html" target="_blank">Search on Indeed →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">GARANT Gebäudereinigung</div>
+      <div class="ag-addr">📍 Siegen, NRW — confirmed active</div>
+      <div class="ag-desc">Commercial and industrial cleaning. Hires in Vollzeit, Teilzeit, and Minijob contracts. Apply via their website.</div>
+      <a href="https://gebaeudereinigung-garant.de/jobs/" target="_blank">garant jobs →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">Kühn Gebäudereinigungs-GmbH</div>
+      <div class="ag-addr">📍 57074 Siegen</div>
+      <div class="ag-desc">Siegen-based cleaning company. Apply via the Karriere Südwestfalen portal for current openings.</div>
+      <a href="https://www.karriere-suedwestfalen.de/kuehn-gebaeudereinigung/stellenangebote" target="_blank">Apply via KSW →</a>
+    </div>
+    <div class="agency-card">
+      <div class="ag-name">57jobs.de — Local Siegen Job Board</div>
+      <div class="ag-addr">📍 Siegener Zeitung regional job portal</div>
+      <div class="ag-desc">The local newspaper job board. Search "Reinigungskraft" here for Siegen-specific listings that may not appear on larger national portals.</div>
+      <a href="https://www.57jobs.de/jobs/reinigungskraft-in-siegen" target="_blank">57jobs.de/reinigung →</a>
+    </div>
+  </div>
+
+  <div class="sub-label">Platforms — Find Private and Informal Cleaning Clients</div>
+  <ul class="tip-list">
+    <li><span class="tip-icon">🧽</span><div><strong>Putzperle.de</strong> — Germany's dedicated platform for household and small business cleaning. Register as a cleaner, set your own rate and availability, and let clients come to you. <a href="https://putzperle.de/" target="_blank">putzperle.de →</a></div></li>
+    <li><span class="tip-icon">📋</span><div><strong>Kleinanzeigen.de</strong> — Search "Reinigungskraft Siegen" or post your own ad offering cleaning services. Private households hire directly here without any formal process. <a href="https://www.kleinanzeigen.de" target="_blank">kleinanzeigen.de →</a></div></li>
+    <li><span class="tip-icon">🔍</span><div><strong>Karriere Südwestfalen</strong> — Search "Reinigungskraft Siegen" for professional company listings in the region. <a href="https://www.karriere-suedwestfalen.de/stellenangebote-reinigungskraft-in-siegen" target="_blank">KSW Reinigung →</a></div></li>
+  </ul>
+</section>
+
+<!-- ═══════════ RESTAURANTS ═══════════ -->
+<section id="restaurants">
+  <div class="section-head">
+    <div class="icon">🍽️</div>
+    <h2>Restaurants — Walk-In</h2>
+    <span class="badge">Bring printed CV · Ask for the manager</span>
+  </div>
+  <hr class="divider">
+  <div class="box-green">
+    <strong>Walk-in tip:</strong> Asian and South Asian restaurants (Indian, Korean, Chinese, Vietnamese, Japanese) are among the most accessible for international students. Dishwashing and kitchen helper roles rarely require German — just show up, be polite, and be available. For all restaurants, go on weekdays when there is less crowd and ask specifically for the owner or Betriebsleiter.
+  </div>
+
+  <div class="sub-label">Indian &amp; South Asian</div>
+  <div class="card-grid">
+    <div class="card"><div class="card-name">Namaste India</div><div class="card-address">Markt 47-49, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-blue">Indian</span><span class="tag tag-yellow">Walk-in</span><span class="tag tag-green">Dishwasher / Service</span></div></div>
+    <div class="card"><div class="card-name">Swagat</div><div class="card-address">Siegen — Indian restaurant (verify address on Google Maps)</div><div class="card-tags"><span class="tag tag-blue">Indian</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Green Chilli</div><div class="card-address">Siegen — Asian / Indian (verify on Google Maps)</div><div class="card-tags"><span class="tag tag-blue">Indian / Asian</span><span class="tag tag-yellow">Walk-in</span><span class="tag tag-green">Dishwasher</span></div></div>
+  </div>
+
+  <div class="sub-label">Asian — Japanese / Korean / Chinese / Vietnamese</div>
+  <div class="card-grid">
+    <div class="card"><div class="card-name">Yumini — Japanese Restaurant</div><div class="card-address">Koblenzer Straße 18, 57072 Siegen-Unterstadt</div><div class="card-tags"><span class="tag tag-blue">Japanese / Asian</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Café de Seoul</div><div class="card-address">Siegen — Korean café (verify address)</div><div class="card-tags"><span class="tag tag-blue">Korean</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Chinese &amp; Vietnamese Restaurants</div><div class="card-address">Multiple — walk around Siegen city centre and Weidenau</div><div class="card-tags"><span class="tag tag-blue">Asian</span><span class="tag tag-green">Dishwasher / Kitchen helper</span><span class="tag tag-yellow">Walk-in always</span></div></div>
+    <div class="card"><div class="card-name">Esperos — Greek Restaurant</div><div class="card-address">Siegen city — confirmed on Yelp</div><div class="card-tags"><span class="tag tag-blue">Greek</span><span class="tag tag-yellow">Walk-in</span></div></div>
+  </div>
+
+  <div class="sub-label">German &amp; Traditional</div>
+  <div class="card-grid">
+    <div class="card"><div class="card-name">Brauhaus Johann-Friedrich Irle</div><div class="card-address">Siegen city centre — top-rated on Yelp &amp; TripAdvisor</div><div class="card-tags"><span class="tag tag-green">Traditional brewery</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Restaurant Pfeffermühle</div><div class="card-address">Siegen — well established, near Dorint Hotel</div><div class="card-tags"><span class="tag tag-green">German / fine dining</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Altes Zeughaus</div><div class="card-address">Burgstraße 18, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-green">Various dishes</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">früh bis spät — Cologne dishes</div><div class="card-address">Fürst-Johann-Moritz-Straße 3, 57072 Siegen-Unterstadt</div><div class="card-tags"><span class="tag tag-green">German</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Gartenhaus</div><div class="card-address">Auf den Hütten 12, 57076 Siegen-Weidenau</div><div class="card-tags"><span class="tag tag-green">Various dishes</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Schwarzes Schaf — Schnitzel</div><div class="card-address">Erzstraße 45, 57076 Siegen-Weidenau</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Zum Häutebacher</div><div class="card-address">Siegen — confirmed on Yelp &amp; TripAdvisor</div><div class="card-tags"><span class="tag tag-green">Traditional German</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Hackermann</div><div class="card-address">Siegen — top-rated on Yelp 2026</div><div class="card-tags"><span class="tag tag-green">Local restaurant</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Münzwerk</div><div class="card-address">Siegen city — confirmed on Yelp</div><div class="card-tags"><span class="tag tag-green">Restaurant / bar</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Dunkelrestaurant — Dinner in the Dark</div><div class="card-address">Kölner Straße 11, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-purple">Unique concept</span><span class="tag tag-yellow">Walk-in</span></div></div>
+  </div>
+
+  <div class="sub-label">Steakhouses</div>
+  <div class="card-grid">
+    <div class="card"><div class="card-name">Steakhaus El Rancho</div><div class="card-address">Neumarkt 7, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-red">Steakhouse</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Sebastian's Steakhouse &amp; Bar</div><div class="card-address">Sandstraße 31, 57072 Siegen-Unterstadt</div><div class="card-tags"><span class="tag tag-red">Steakhouse</span><span class="tag tag-yellow">Walk-in</span></div></div>
+  </div>
+
+  <div class="sub-label">Italian &amp; Mediterranean</div>
+  <div class="card-grid">
+    <div class="card"><div class="card-name">Die Brasserie — Italian</div><div class="card-address">Unteres Schloss 1, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-blue">Italian</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Restaurant Da Vinci</div><div class="card-address">Hinterstraße, Siegen — confirmed on review sites</div><div class="card-tags"><span class="tag tag-blue">Italian</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Gustavo Pero</div><div class="card-address">Siegen — verify current address on Google Maps</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span></div></div>
+  </div>
+
+  <div class="sub-label">Burgers &amp; Fast Casual</div>
+  <div class="card-grid">
+    <div class="card"><div class="card-name">Want Beef? — Burgers</div><div class="card-address">Bahnhofstraße 19, 57072 Siegen-Unterstadt</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Timber Jacks</div><div class="card-address">Siegen city — verify on Google Maps</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Frittenglück</div><div class="card-address">Kölner Straße 36, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">McDonald's / Burger King</div><div class="card-address">Siegen city centre — multiple locations</div><div class="card-tags"><span class="tag tag-green">International friendly</span><span class="tag tag-yellow">Walk-in or apply online</span></div></div>
+    <div class="card"><div class="card-name">Domino's Pizza</div><div class="card-address">Multiple locations in Siegen</div><div class="card-tags"><span class="tag tag-red">Delivery / Kitchen</span><span class="tag tag-yellow">Apply online</span></div></div>
+  </div>
+
+  <div class="sub-label">Other Restaurants &amp; Dining</div>
+  <div class="card-grid">
+    <div class="card"><div class="card-name">Café &amp; Bar Celona</div><div class="card-address">Am Bahnhof 25, 57072 Siegen-Unterstadt</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span><span class="tag tag-green">Service / Kitchen</span></div></div>
+    <div class="card"><div class="card-name">Salatherzen — Salads</div><div class="card-address">Am Bahnhof 40, 57072 Siegen-Unterstadt</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span><span class="tag tag-green">Fast casual</span></div></div>
+    <div class="card"><div class="card-name">My First Kitchen</div><div class="card-address">Hindenburgstraße 5-7, 57072 Siegen-Unterstadt</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Bim Käs — Cheese Restaurant</div><div class="card-address">Fichtenweg 4, 57078 Siegen-Geisweid</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span></div></div>
+  </div>
+</section>
+
+<!-- ═══════════ CAFES ═══════════ -->
+<section id="cafes">
+  <div class="section-head">
+    <div class="icon">☕</div>
+    <h2>Cafés — Walk-In</h2>
+    <span class="badge">Barista / Service roles</span>
+  </div>
+  <hr class="divider">
+  <div class="card-grid">
+    <div class="card"><div class="card-name">Kafferösterei Pagnia</div><div class="card-address">Kölner Straße 44, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-green">Artisan roastery</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Café Extrablatt</div><div class="card-address">Bahnhofstraße 4, 57072 Siegen-Unterstadt</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span><span class="tag tag-green">Chain café</span></div></div>
+    <div class="card"><div class="card-name">Café Flocke</div><div class="card-address">Marburger Straße 45, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Stadtkind</div><div class="card-address">Alte Poststraße 6, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-green">Trendy local</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Café Noir</div><div class="card-address">Am Kornmarkt, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Café Planlos</div><div class="card-address">Kohlbettstraße 18, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Das Naschwerk</div><div class="card-address">Am Bahnhof 17, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-green">Pastry café</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Café del Sol</div><div class="card-address">Freudenberger Straße 61, 57072 Siegen</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Picknicker</div><div class="card-address">Sandstraße 3, 57072 Siegen-Unterstadt</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span><span class="tag tag-green">Deli café</span></div></div>
+    <div class="card"><div class="card-name">Coco's Waffel-Welt</div><div class="card-address">Bahnhof Weidenau 7, 57076 Siegen-Weidenau</div><div class="card-tags"><span class="tag tag-yellow">Walk-in</span></div></div>
+  </div>
+</section>
+
+<!-- ═══════════ BARS & CLUBS ═══════════ -->
+<section id="bars">
+  <div class="section-head">
+    <div class="icon">🍺</div>
+    <h2>Bars &amp; Clubs — Evening and Weekend Shifts</h2>
+    <span class="badge">Good tips · Works around lecture schedule</span>
+  </div>
+  <hr class="divider">
+  <div class="sub-label">Bars</div>
+  <div class="card-grid">
+    <div class="card"><div class="card-name">Sausalitos</div><div class="card-address">Hindenburgstraße 9, 57072 Siegen</div><div class="card-tags"><span class="tag tag-red">Cocktail bar</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Mirror Bar</div><div class="card-address">Hindenburgstraße 5-7, 57072 Siegen</div><div class="card-tags"><span class="tag tag-red">Bar</span><span class="tag tag-yellow">Walk-in</span></div></div>
+    <div class="card"><div class="card-name">Schellack Music Bar</div><div class="card-address">Alte Poststraße 26, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-red">Music bar</span></div></div>
+    <div class="card"><div class="card-name">Amplifier</div><div class="card-address">Bahnhofstr. 32, 57072 Siegen-Unterstadt</div><div class="card-tags"><span class="tag tag-red">Live music venue</span></div></div>
+    <div class="card"><div class="card-name">9bar</div><div class="card-address">Markt 27, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-red">Bar</span></div></div>
+    <div class="card"><div class="card-name">Jojo's Pub</div><div class="card-address">Formerstraße 1, 57076 Siegen-Weidenau</div><div class="card-tags"><span class="tag tag-red">Pub</span><span class="tag tag-green">Billiards / darts</span></div></div>
+    <div class="card"><div class="card-name">Altstadtschänke</div><div class="card-address">Untere Metzgerstraße 16, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-red">Traditional pub</span></div></div>
+    <div class="card"><div class="card-name">Frickes</div><div class="card-address">Alte Poststraße 8, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-red">Bar</span></div></div>
+    <div class="card"><div class="card-name">early to late</div><div class="card-address">Fürst-Johann-Moritz-Straße 3, 57072 Siegen-Unterstadt</div><div class="card-tags"><span class="tag tag-red">Bar</span></div></div>
+    <div class="card"><div class="card-name">The Living Room</div><div class="card-address">Bahnhofstraße 10, 57072 Siegen-Unterstadt</div><div class="card-tags"><span class="tag tag-red">Lounge bar</span></div></div>
+    <div class="card"><div class="card-name">WG-Bar</div><div class="card-address">Löhrstraße 26, 57072 Siegen-Oberstadt</div><div class="card-tags"><span class="tag tag-red">Bar</span></div></div>
+    <div class="card"><div class="card-name">Belle Epoque</div><div class="card-address">In der Hüttenwiese 24, 57072 Siegen-Weidenau</div><div class="card-tags"><span class="tag tag-red">Bar</span></div></div>
+  </div>
+  <div class="sub-label">Clubs</div>
+  <div class="card-grid">
+    <div class="card"><div class="card-name">Wolkenkuckucksheim</div><div class="card-address">Hindenburgstraße 9, 57072 Siegen</div><div class="card-tags"><span class="tag tag-purple">Club</span></div></div>
+    <div class="card"><div class="card-name">Vortex</div><div class="card-address">Auf den Hütten 4, 57076 Siegen-Weidenau</div><div class="card-tags"><span class="tag tag-purple">Club</span></div></div>
+    <div class="card"><div class="card-name">Meyer</div><div class="card-address">Hindenburgstraße 7a, 57072 Siegen</div><div class="card-tags"><span class="tag tag-purple">Club</span></div></div>
+    <div class="card"><div class="card-name">dee2</div><div class="card-address">Hauptstraße 86, 57074 Siegen</div><div class="card-tags"><span class="tag tag-purple">Club</span></div></div>
+    <div class="card"><div class="card-name">VEB</div><div class="card-address">Marienborner Straße 16, 57074 Siegen</div><div class="card-tags"><span class="tag tag-purple">Club</span></div></div>
+    <div class="card"><div class="card-name">SPLIT</div><div class="card-address">Birlenbacher Hütte 12-18, 57078 Siegen-Geisweid</div><div class="card-tags"><span class="tag tag-purple">Club</span></div></div>
+    <div class="card"><div class="card-name">Petit</div><div class="card-address">Frankfurter Str. 1, 57074 Siegen</div><div class="card-tags"><span class="tag tag-purple">Club</span></div></div>
+    <div class="card"><div class="card-name">OX — Freudenberg</div><div class="card-address">Gewerbestraße 7, 57258 Freudenberg (~15 min)</div><div class="card-tags"><span class="tag tag-purple">Club</span></div></div>
+  </div>
+</section>
+
+<!-- ═══════════ SEASONAL ═══════════ -->
+<section id="seasonal">
+  <div class="section-head">
+    <div class="icon">🌞</div>
+    <h2>Seasonal Jobs — Summer Only</h2>
+    <span class="badge">April–September · Apply in February/March</span>
+  </div>
+  <hr class="divider">
+  <div class="seasonal">Go in person in February or March to ask — before the season starts, not during. The City of Siegen manages the pools directly. Check siegen.de/stellenangebote regularly from January onwards.</div>
+  <div class="card-grid">
+    <div class="card"><div class="card-name">Outdoor Swimming Pools — Lifeguard / Ticket / Service</div><div class="card-address">Warmwasserfreibad Geisweid · Warmwasserfreibad Kaan-Marienborn · Naturfreibad Eiserfeld · Naturfreibad Seelbacher Weiher</div><div class="card-tags"><span class="tag tag-green">Summer only</span><span class="tag tag-blue">City of Siegen employer</span></div></div>
+    <div class="card"><div class="card-name">Indoor Pools — Possible Year-Round</div><div class="card-address">Hallenbad Eiserfeld · Hallenbad Löhrtor · Hallenbad Weidenau</div><div class="card-tags"><span class="tag tag-blue">City government</span><span class="tag tag-green">Check siegen.de</span></div></div>
+    <div class="card"><div class="card-name">Tennis Courts — Ball Helper / Court Maintenance</div><div class="card-address">Siegen area tennis clubs — visit each one directly</div><div class="card-tags"><span class="tag tag-green">Summer only</span><span class="tag tag-yellow">Walk-in to club office</span></div></div>
+    <div class="card"><div class="card-name">City Events &amp; Festivals</div><div class="card-address">Various locations (Johannimarkt, markets, summer events)</div><div class="card-tags"><span class="tag tag-blue">City of Siegen</span><span class="tag tag-yellow">Check siegen.de/stellenangebote</span></div></div>
+  </div>
+</section>
+
+<!-- ═══════════ ONLINE ═══════════ -->
+<section id="online">
+  <div class="section-head">
+    <div class="icon">💻</div>
+    <h2>Online &amp; Remote Jobs</h2>
+    <span class="badge">Work from home · Flexible schedule</span>
+  </div>
+  <hr class="divider">
+  <div class="box-blue">
+    <strong>Note for non-EU students:</strong> Self-employment and freelancing require prior written approval from the Ausländerbehörde. Working as an employee remotely — such as a Werkstudent contract or platform-based tutoring with a proper employment agreement — is generally fine. Always check your visa conditions if unsure.
+  </div>
+  <ul class="tip-list">
+    <li><span class="tip-icon">🎓</span><div><strong>HiWi / SHK Jobs at Uni Siegen</strong> — Academic assistant roles at the university. These do NOT count toward your 140-day annual work limit — making them the single best option alongside your studies. <a href="https://jobs.uni-siegen.de" target="_blank">jobs.uni-siegen.de →</a></div></li>
+    <li><span class="tip-icon">📚</span><div><strong>Tutoring — Nachhilfe</strong> — Teach school subjects to local students. Platforms: <a href="https://www.tutormatics.de" target="_blank">Tutormatics.de</a> (€15/45 min), <a href="https://www.superprof.de" target="_blank">Superprof.de</a>, <a href="https://www.nachhilfe.de" target="_blank">Nachhilfe.de</a>, <a href="https://www.schuelerhilfe.de" target="_blank">Schülerhilfe</a> (has Siegen branches). Also post flyers on the university noticeboard — many local families prefer university students as tutors.</div></li>
+    <li><span class="tip-icon">🌍</span><div><strong>English Teaching Online</strong> — If you are a fluent English speaker. <a href="https://www.lingoda.com/en/become-a-teacher/" target="_blank">Lingoda</a> offers proper employment contracts. <a href="https://en.amazingtalker.com/apply-to-teach/" target="_blank">AmazingTalker</a> lets you set your own rate. Pay is typically €15–25/hr.</div></li>
+    <li><span class="tip-icon">🖥️</span><div><strong>Werkstudent IT / Tech (Remote)</strong> — If you study computer science, engineering, or business: search "Werkstudent remote" on <a href="https://www.linkedin.com/jobs" target="_blank">LinkedIn</a>, StepStone, and Indeed. Pay is typically €12–18/hr and it looks excellent on your CV.</div></li>
+    <li><span class="tip-icon">🔬</span><div><strong>Clickworker / Appen</strong> — Online data labeling, web research, and AI training tasks. <a href="https://www.clickworker.com" target="_blank">Clickworker.com</a> and <a href="https://www.appen.com" target="_blank">Appen.com</a>. Pay is variable but the work is flexible — good for filling one or two free hours between lectures.</div></li>
+  </ul>
+</section>
+
+<!-- ═══════════ BABYSITTING ═══════════ -->
+<section id="babysit">
+  <div class="section-head">
+    <div class="icon">👶</div>
+    <h2>Babysitting &amp; Child Care</h2>
+    <span class="badge">€12–16/hr · Very flexible scheduling</span>
+  </div>
+  <hr class="divider">
+  <ul class="tip-list">
+    <li><span class="tip-icon">🍼</span><div><strong>Betreut.de</strong> — Germany's largest babysitting platform. Register as a babysitter, set your own hours and hourly rate. Families in Siegen search here and contact you directly. <a href="https://www.betreut.de" target="_blank">betreut.de →</a></div></li>
+    <li><span class="tip-icon">👦</span><div><strong>Care.com Germany</strong> — International-friendly platform. Register as a babysitter or childminder and let local families reach out. <a href="https://www.care.com/de-de" target="_blank">care.com/de-de →</a></div></li>
+    <li><span class="tip-icon">📢</span><div><strong>University Noticeboards (Schwarzes Brett)</strong> — Post a babysitting flyer on the physical noticeboards at Uni Siegen and share in student WhatsApp groups. Professor and staff families near campus often prefer to hire students they can trust.</div></li>
+    <li><span class="tip-icon">📋</span><div><strong>Kleinanzeigen.de</strong> — Post an ad offering babysitting services or search "Babysitter gesucht Siegen" to find families looking. Direct contact, no agency fees. <a href="https://www.kleinanzeigen.de" target="_blank">kleinanzeigen.de →</a></div></li>
+  </ul>
+</section>
+
+<!-- ═══════════ OTHER EMPLOYERS ═══════════ -->
+<section id="other">
+  <div class="section-head">
+    <div class="icon">🏙️</div>
+    <h2>Other Local Siegen Employers</h2>
+    <span class="badge">Walk-in or apply online</span>
+  </div>
+  <hr class="divider">
+  <div class="card-grid">
+    <div class="apply-card">
+      <div class="company">City-Center(Löhr-Center) Shopping Mall</div>
+      <p>Siegen's main shopping mall at Löhrstraße 40, 57072. Walk into every individual shop and ask for Aushilfe or Minijob work — H&amp;M, Primark, TK Maxx, Zara, and many smaller retailers. Especially effective before Christmas, Easter, and summer sale seasons when stores urgently need extra staff.</p>
+      <div class="note">Best time to visit: October/November for Christmas hiring. Always bring printed copies of your CV.</div>
+    </div>
+    <div class="apply-card">
+      <div class="company">dm / Rossmann / Müller — Drugstores</div>
+      <p>German drugstore chains hire part-time helpers for shelf stocking and cashier roles. Multiple locations throughout Siegen. Minimal German needed for stock-room work.</p>
+      <a href="https://www.dm.de/jobs" target="_blank">dm Jobs →</a>
+      <div class="note">Rossmann: rossmann.de/karriere · Müller: mueller.de/karriere</div>
+    </div>
+    <div class="apply-card">
+      <div class="company">Studierendenwerk Siegen — Mensa &amp; Cafeteria</div>
+      <p>The student services organisation hires students to work in the university Mensa (canteen) and cafeteria. Extremely student-friendly employer. Apply early each semester as positions fill quickly.</p>
+      <a href="https://www.studierendenwerk-siegen.de" target="_blank">Studierendenwerk Siegen →</a>
+    </div>
+    <div class="apply-card">
+      <div class="company">Cineplex Cinema — Siegen</div>
+      <p>Cineplex at Löhrstraße 6, 57072 Siegen hires student Aushilfe for ticket sales, concessions, and cleaning. Evening and weekend shifts suit the student schedule well. Walk in on a quiet weekday afternoon and ask to speak to the Filialleiter.</p>
+    </div>
+    <div class="apply-card">
+      <div class="company">Gyms — McFit / FitX / Local Studios</div>
+      <p>Gyms hire student receptionists and cleaning staff. A useful perk of these roles is a free gym membership. Walk in or check their career pages.</p>
+      <a href="https://career.mcfit.com/" target="_blank">McFit Karriere →</a>
+    </div>
+    <div class="apply-card">
+      <div class="company">Catering &amp; Event Service Companies</div>
+      <p>Local catering companies hire students for events, weddings, corporate functions, and festivals throughout the year. Pay is typically €13–18/hr with flexible scheduling. Search "Catering Aushilfe Siegen" or "Servicekraft Event Siegen" on Indeed.de. Larger hotels in Siegen (Dorint, Best Western) also hire banquet service staff.</p>
+    </div>
+    <div class="apply-card">
+      <div class="company">City of Siegen — Government Positions</div>
+      <p>The City of Siegen posts Minijob and part-time openings for pools, city events, administration support, and public services throughout the year. Check their portal regularly — not only in summer.</p>
+      <a href="http://www.siegen.de/stellenangebote" target="_blank">siegen.de/stellenangebote →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ALL PORTALS ═══════════ -->
+<section id="portals">
+  <div class="section-head">
+    <div class="icon">🌐</div>
+    <h2>All Job Portals — Check These Weekly</h2>
+    <span class="badge">Bookmark all of them</span>
+  </div>
+  <hr class="divider">
+  <div class="portal-grid">
+    <div class="portal-item"><span class="pi">⚡</span><div><strong>Zenjob</strong> — App-based shifts, no CV, instant booking · <a href="https://www.zenjob.com/en/jobs/" target="_blank">zenjob.com</a></div></div>
+    <div class="portal-item"><span class="pi">🎓</span><div><strong>Uni Siegen Student Jobs</strong> — Register with your student email · <a href="https://jobvermittlung.zv.uni-siegen.de/jobvermittlung/" target="_blank">jobvermittlung.zv.uni-siegen.de</a></div></div>
+    <div class="portal-item"><span class="pi">🎓</span><div><strong>Uni Siegen HiWi / SHK</strong> — Academic helper roles. Do not count toward 140-day limit · <a href="https://jobs.uni-siegen.de" target="_blank">jobs.uni-siegen.de</a></div></div>
+    <div class="portal-item"><span class="pi">🏙️</span><div><strong>City of Siegen Jobs</strong> — Official municipal job portal · <a href="http://www.siegen.de/stellenangebote" target="_blank">siegen.de/stellenangebote</a></div></div>
+    <div class="portal-item"><span class="pi">🌍</span><div><strong>Karriere Südwestfalen</strong> — Best regional board for the Siegen area · <a href="https://www.karriere-suedwestfalen.de/" target="_blank">karriere-suedwestfalen.de</a></div></div>
+    <div class="portal-item"><span class="pi">📰</span><div><strong>57jobs.de</strong> — Siegener Zeitung local job board · <a href="https://www.57jobs.de" target="_blank">57jobs.de</a></div></div>
+    <div class="portal-item"><span class="pi">⚡</span><div><strong>HeyJobs</strong> — Fast apply, minimal CV needed · <a href="https://www.heyjobs.co/" target="_blank">heyjobs.co</a></div></div>
+    <div class="portal-item"><span class="pi">🔎</span><div><strong>Indeed.de</strong> — Search "Minijob Siegen" or "Aushilfe Siegen" · <a href="https://de.indeed.com" target="_blank">de.indeed.com</a></div></div>
+    <div class="portal-item"><span class="pi">🔎</span><div><strong>StepStone.de</strong> — Germany's largest job portal · <a href="https://www.stepstone.de" target="_blank">stepstone.de</a></div></div>
+    <div class="portal-item"><span class="pi">💼</span><div><strong>LinkedIn Jobs</strong> — Best for Werkstudent and remote positions · <a href="https://www.linkedin.com/jobs" target="_blank">linkedin.com/jobs</a></div></div>
+    <div class="portal-item"><span class="pi">🧹</span><div><strong>Putzperle</strong> — Cleaning job platform for Germany · <a href="https://putzperle.de/" target="_blank">putzperle.de</a></div></div>
+    <div class="portal-item"><span class="pi">📋</span><div><strong>Kleinanzeigen.de</strong> — Private and informal job listings · <a href="https://www.kleinanzeigen.de" target="_blank">kleinanzeigen.de</a></div></div>
+    <div class="portal-item"><span class="pi">🔎</span><div><strong>Jobware.de</strong> — NRW / Westfalen specialist portal · <a href="https://www.jobware.de" target="_blank">jobware.de</a></div></div>
+    <div class="portal-item"><span class="pi">🏛️</span><div><strong>Bundesagentur für Arbeit</strong> — Official German employment agency · <a href="https://www.arbeitsagentur.de/jobsuche/" target="_blank">arbeitsagentur.de/jobsuche</a></div></div>
+    <div class="portal-item"><span class="pi">🎓</span><div><strong>Jobmensa.de</strong> — Student-focused platform Germany-wide · <a href="https://www.jobmensa.de" target="_blank">jobmensa.de</a></div></div>
+    <div class="portal-item"><span class="pi">🎓</span><div><strong>Studentjob.de</strong> — Student-specific job platform · <a href="https://www.studentjob.de" target="_blank">studentjob.de</a></div></div>
+    <div class="portal-item"><span class="pi">🔧</span><div><strong>Jobmenge.de</strong> — One-off student tasks and shifts · <a href="https://www.jobmenge.de" target="_blank">jobmenge.de</a></div></div>
+    <div class="portal-item"><span class="pi">🔎</span><div><strong>Stellenanzeigen.de</strong> — Large national board, filter Teilzeit / Minijob · <a href="https://www.stellenanzeigen.de" target="_blank">stellenanzeigen.de</a></div></div>
+  </div>
+</section>
+
+<!-- ═══════════ PRO TIPS ═══════════ -->
+<section id="tips">
+  <div class="section-head">
+    <div class="icon">💡</div>
+    <h2>Pro Tips &amp; Walk-In Strategy</h2>
+  </div>
+  <hr class="divider">
+  <ul class="tip-list">
+    <li><span class="tip-icon">📅</span><div>The best time for walk-ins is <strong>Tuesday to Thursday between 2 and 4pm.</strong> Avoid Mondays (busy start of week), the lunch rush (12–2pm), and Friday evenings. Managers are most available and most relaxed during mid-afternoon weekdays.</div></li>
+    <li><span class="tip-icon">📄</span><div>Always carry <strong>five to ten printed copies of your CV in German.</strong> Include your German phone number, Siegen address, degree name, and university. Even if a place says they are not hiring, leave a copy — it often leads to a call weeks later.</div></li>
+    <li><span class="tip-icon">🗣️</span><div>The walk-in phrase that works: <em>"Ich suche einen Minijob oder Nebenjob. Haben Sie gerade eine offene Stelle?"</em> — straightforward and exactly what a manager needs to hear.</div></li>
+    <li><span class="tip-icon">🔄</span><div>If they say no, ask: <em>"Kann ich in zwei Wochen nochmal vorbeikommen?"</em> — and then actually return. Consistent follow-up is one of the most effective things you can do and almost no one does it.</div></li>
+    <li><span class="tip-icon">🏢</span><div><strong>Staffing agencies are genuinely underused by students.</strong> Walking into two or three agencies from Section 4 with your documents can get you placed within days at a local company — often faster than any online application process.</div></li>
+    <li><span class="tip-icon">⚡</span><div>Register on <strong>Zenjob while you are doing everything else.</strong> Verification takes about a week, but once active you can book extra shifts on any free day to supplement a main job without any additional applications.</div></li>
+    <li><span class="tip-icon">⚠️</span><div><strong>Red flags to watch for:</strong> No written contract offered, pay below €13.90/hr, pressure to exceed 20 hours per week during semester, or no Lohnzettel (payslip) provided. Report any of these to the Faire Integration advice centre for migrants.</div></li>
+    <li><span class="tip-icon">🎯</span><div><strong>Suggested priority order for your first week:</strong> Sort all documents → Register on Zenjob → Walk into two or three staffing agencies → Apply at BISON Polymers → Walk into nearby supermarkets → Apply via the DPD and Mensa online portals → Keep checking siegen.de/stellenangebote weekly.</div></li>
+  </ul>
+</section>
+
+</div>
+
+<footer>
+  Jobs Guide for Siegen Students · Compiled by <span>Anas Hussain Khan</span> · April 2026 · Always verify addresses and details before visiting — things change.
+</footer>
+</body>
+</html>
