@@ -4,98 +4,534 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jobs Guide For Siegen Students</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+  /* ── TOKENS ── */
   :root {
-    --bg: #0e0e0e; --surface: #181818; --card: #1e1e1e; --border: #2e2e2e;
-    --accent: #f5c842; --accent2: #3be8a0; --red: #ff5f5f;
-    --text: #e8e8e8; --muted: #888;
-    --font-head: 'Syne', sans-serif; --font-body: 'Inter', sans-serif;
+    --bg: #0c0c0c;
+    --surface: #161616;
+    --card: #1c1c1c;
+    --card-hover: #222;
+    --border: #2a2a2a;
+    --border-soft: #242424;
+    --accent: #f5c842;
+    --accent-dim: rgba(245,200,66,0.12);
+    --accent2: #3be8a0;
+    --accent2-dim: rgba(59,232,160,0.12);
+    --red: #ff6060;
+    --red-dim: rgba(255,96,96,0.12);
+    --blue: #5aadff;
+    --blue-dim: rgba(90,173,255,0.12);
+    --purple: #b47aff;
+    --purple-dim: rgba(180,122,255,0.12);
+    --text: #eaeaea;
+    --text-secondary: #b0b0b0;
+    --muted: #666;
+    --font-head: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --radius: 12px;
+    --radius-sm: 8px;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 14px; line-height: 1.65; }
 
-  .toc { background: #141414; border-bottom: 1px solid var(--border); padding: 10px 28px; display: flex; flex-wrap: wrap; gap: 6px; }
-  .toc a { font-size: 11px; color: var(--muted); text-decoration: none; background: var(--card); border: 1px solid var(--border); padding: 3px 9px; border-radius: 20px; transition: all 0.2s; }
-  .toc a:hover { color: var(--accent); border-color: var(--accent); }
+  /* ── RESET & BASE ── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;          /* ↑ was 14px */
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
 
-  header { background: linear-gradient(135deg, #1a1a1a 0%, #111 100%); border-bottom: 2px solid var(--accent); padding: 36px 32px 28px; position: relative; overflow: hidden; }
-  header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(245,200,66,0.12) 0%, transparent 70%); border-radius: 50%; }
-  header h1 { font-family: var(--font-head); font-size: clamp(22px, 5vw, 40px); font-weight: 800; line-height: 1.1; color: #fff; }
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+    border-bottom: 2px solid var(--accent);
+    padding: clamp(28px, 5vw, 48px) clamp(20px, 5vw, 40px) 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(245,200,66,0.10) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  header h1 {
+    font-family: var(--font-head);
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 800;
+    line-height: 1.08;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
   header h1 span { color: var(--accent); }
-  .header-sub { margin-top: 14px; color: #bbb; font-size: 13px; max-width: 640px; line-height: 1.7; }
+  .header-sub {
+    margin-top: 16px;
+    color: var(--text-secondary);
+    font-size: clamp(14px, 2vw, 16px);
+    max-width: 680px;
+    line-height: 1.75;
+  }
   .header-sub .author { color: var(--accent2); font-weight: 600; }
-  .header-note { margin-top: 10px; background: rgba(245,200,66,0.07); border-left: 3px solid var(--accent); padding: 10px 14px; border-radius: 0 6px 6px 0; font-size: 12px; color: #ccc; max-width: 640px; }
+  .header-note {
+    margin-top: 14px;
+    background: rgba(245,200,66,0.07);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: clamp(13px, 1.8vw, 15px);
+    color: #ccc;
+    max-width: 680px;
+    line-height: 1.65;
+  }
 
-  .main { padding: 0 24px 60px; display: flex; flex-direction: column; gap: 28px; }
+  /* ── NAV / TOC — big pill bubbles ── */
+  .toc-wrap {
+    background: #111;
+    border-bottom: 1px solid var(--border);
+    padding: 20px clamp(16px, 4vw, 36px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+  .toc-label {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+  }
+  .toc a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 7px 15px;
+    border-radius: 50px;
+    transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.15s;
+    white-space: nowrap;
+    line-height: 1;
+  }
+  .toc a .nav-icon {
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .toc a:hover {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .toc a:active { transform: translateY(0); }
 
-  section { scroll-margin-top: 20px; }
-  .section-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-  .section-head .icon { width: 34px; height: 34px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-  .section-head h2 { font-family: var(--font-head); font-size: 18px; font-weight: 800; color: #fff; }
-  .section-head .badge { margin-left: auto; background: var(--border); color: var(--muted); font-size: 11px; padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
-  hr.divider { border: none; border-top: 1px solid var(--border); margin: 4px 0 18px; }
+  /* ── MAIN LAYOUT ── */
+  .main {
+    padding: 32px clamp(16px, 4vw, 36px) 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
 
-  .box-yellow { background: #1a1200; border: 1.5px solid var(--accent); border-radius: 10px; padding: 18px 22px; margin-bottom: 16px; }
-  .box-yellow h3 { font-family: var(--font-head); font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-  .box-green { background: #0e1a0e; border: 1.5px solid var(--accent2); border-radius: 10px; padding: 14px 18px; margin-bottom: 14px; font-size: 13px; color: #b0f0d0; }
+  /* ── SECTION WRAPPER ── */
+  section { scroll-margin-top: 100px; }
+
+  /* ── SECTION HEADING — large pill banner ── */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    background: linear-gradient(135deg, #1e1e1e, #181818);
+    border: 1.5px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+  }
+  .section-head .icon {
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(245,200,66,0.25);
+  }
+  .section-head h2 {
+    font-family: var(--font-head);
+    font-size: clamp(18px, 3vw, 22px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+    flex: 1;
+  }
+  .section-head .badge {
+    background: rgba(245,200,66,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(245,200,66,0.3);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 50px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  @media (max-width: 520px) {
+    .section-head { flex-wrap: wrap; }
+    .section-head .badge { display: none; }
+  }
+
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--border-soft);
+    margin: 0 0 20px;
+  }
+
+  /* ── INFO BOXES ── */
+  .box-yellow {
+    background: #181000;
+    border: 1.5px solid rgba(245,200,66,0.5);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 18px;
+  }
+  .box-yellow h3 {
+    font-family: var(--font-head);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .box-yellow p { font-size: 15px; color: #d0c080; }
+
+  .box-green {
+    background: #0b1610;
+    border: 1.5px solid rgba(59,232,160,0.4);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    font-size: 15px;
+    color: #9de8c0;
+    line-height: 1.65;
+  }
   .box-green strong { color: var(--accent2); }
-  .box-blue { background: #0e0e1a; border: 1px solid #2a2a5a; border-radius: 10px; padding: 14px 18px; font-size: 13px; color: #9090d0; margin-bottom: 14px; }
-  .box-blue strong { color: #80bfff; }
-  .box-red { background: #1a0e0e; border: 1px solid #5a2a2a; border-radius: 10px; padding: 14px 18px; font-size: 13px; color: #d09090; margin-bottom: 14px; }
-  .seasonal { background: linear-gradient(135deg, #0f1a2a, #0e1520); border: 1px solid #2a4a7a; border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #90c0f0; margin-bottom: 12px; }
 
-  .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
-  .rule-item { background: rgba(245,200,66,0.06); border-radius: 6px; padding: 11px 13px; }
-  .rule-item .rule-label { color: var(--accent); font-weight: 600; font-size: 11px; margin-bottom: 3px; letter-spacing: 0.3px; }
-  .rule-item .rule-val { color: var(--text); font-size: 12.5px; }
+  .box-blue {
+    background: #0b0b18;
+    border: 1px solid rgba(90,173,255,0.25);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    font-size: 15px;
+    color: #8ab0d8;
+    margin-bottom: 18px;
+    line-height: 1.65;
+  }
+  .box-blue strong { color: var(--blue); }
 
-  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(265px, 1fr)); gap: 11px; }
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; transition: border-color 0.2s, transform 0.2s; }
-  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .card .card-name { font-family: var(--font-head); font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 4px; }
-  .card .card-address { font-size: 12px; color: var(--muted); margin-bottom: 8px; padding-left: 16px; position: relative; }
-  .card .card-address::before { content: '📍'; font-size: 10px; position: absolute; left: 0; top: 1px; }
-  .card .card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
-  .tag { font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 20px; letter-spacing: 0.3px; }
-  .tag-green { background: rgba(59,232,160,0.12); color: var(--accent2); border: 1px solid rgba(59,232,160,0.25); }
-  .tag-yellow { background: rgba(245,200,66,0.12); color: var(--accent); border: 1px solid rgba(245,200,66,0.25); }
-  .tag-red { background: rgba(255,95,95,0.12); color: var(--red); border: 1px solid rgba(255,95,95,0.25); }
-  .tag-blue { background: rgba(80,160,255,0.12); color: #80bfff; border: 1px solid rgba(80,160,255,0.25); }
-  .tag-purple { background: rgba(180,120,255,0.12); color: #c490ff; border: 1px solid rgba(180,120,255,0.25); }
+  .box-red {
+    background: #180b0b;
+    border: 1px solid rgba(255,96,96,0.3);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    font-size: 15px;
+    color: #d09090;
+    margin-bottom: 18px;
+    line-height: 1.65;
+  }
 
-  .apply-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px; }
-  .apply-card .company { font-family: var(--font-head); font-weight: 800; font-size: 15px; color: var(--accent); margin-bottom: 5px; }
-  .apply-card p { font-size: 13px; color: var(--text); margin-bottom: 5px; }
-  .apply-card a { display: inline-block; background: var(--accent); color: #000; font-weight: 600; font-size: 11px; letter-spacing: 0.4px; padding: 5px 13px; border-radius: 20px; text-decoration: none; margin-top: 5px; transition: opacity 0.2s; }
-  .apply-card a:hover { opacity: 0.85; }
-  .apply-card .note { font-size: 11px; color: var(--muted); margin-top: 6px; }
+  .seasonal {
+    background: linear-gradient(135deg, #0e1825, #0b1020);
+    border: 1px solid rgba(90,173,255,0.3);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    font-size: 15px;
+    color: #7ab0e0;
+    margin-bottom: 16px;
+    line-height: 1.65;
+  }
+
+  /* ── WORK RULES GRID ── */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+  }
+  .rule-item {
+    background: var(--accent-dim);
+    border: 1px solid rgba(245,200,66,0.15);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+  }
+  .rule-item .rule-label {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 5px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+  .rule-item .rule-val {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ── CARD GRID ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+
+  /* ── VENUE CARD ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    transition: border-color 0.2s, background 0.2s, transform 0.18s;
+    cursor: default;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    background: var(--card-hover);
+    transform: translateY(-2px);
+  }
+  .card .card-name {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+    margin-bottom: 5px;
+    line-height: 1.3;
+  }
+  .card .card-address {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .card .card-address::before {
+    content: '📍';
+    font-size: 11px;
+    position: absolute;
+    left: 0;
+    top: 2px;
+  }
+  .card .card-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+  /* ── TAGS ── */
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 50px;
+    letter-spacing: 0.2px;
+    line-height: 1.4;
+  }
+  .tag-green  { background: var(--accent2-dim); color: var(--accent2); border: 1px solid rgba(59,232,160,0.3); }
+  .tag-yellow { background: var(--accent-dim);  color: var(--accent);  border: 1px solid rgba(245,200,66,0.3); }
+  .tag-red    { background: var(--red-dim);    color: var(--red);     border: 1px solid rgba(255,96,96,0.3); }
+  .tag-blue   { background: var(--blue-dim);   color: var(--blue);    border: 1px solid rgba(90,173,255,0.3); }
+  .tag-purple { background: var(--purple-dim); color: var(--purple);  border: 1px solid rgba(180,122,255,0.3); }
+
+  /* ── APPLY CARD ── */
+  .apply-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    transition: border-color 0.2s;
+  }
+  .apply-card:hover { border-color: rgba(245,200,66,0.35); }
+  .apply-card .company {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 17px;
+    color: var(--accent);
+    margin-bottom: 8px;
+    line-height: 1.25;
+  }
+  .apply-card p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    line-height: 1.65;
+  }
+  .apply-card p strong { color: var(--text); }
+  .apply-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--accent);
+    color: #000;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 8px;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .apply-card a:hover { opacity: 0.88; transform: translateY(-1px); }
+  .apply-card .note {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 8px;
+    line-height: 1.5;
+    border-top: 1px solid var(--border-soft);
+    padding-top: 8px;
+  }
   .apply-card.highlight { border-color: var(--accent2); }
   .apply-card.highlight .company { color: var(--accent2); }
+  .apply-card.highlight:hover { border-color: var(--accent2); }
 
-  .tip-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .tip-list li { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 11px 14px; font-size: 13px; display: flex; align-items: flex-start; gap: 10px; }
-  .tip-list li .tip-icon { flex-shrink: 0; font-size: 15px; }
-  .tip-list li a { color: var(--accent); text-decoration: none; }
+  /* ── TIP LIST ── */
+  .tip-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .tip-list li {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    font-size: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.65;
+    transition: border-color 0.2s;
+  }
+  .tip-list li:hover { border-color: var(--border); }
+  .tip-list li .tip-icon { flex-shrink: 0; font-size: 18px; margin-top: 1px; }
+  .tip-list li a { color: var(--accent); text-decoration: none; font-weight: 500; }
   .tip-list li a:hover { text-decoration: underline; }
-  .tip-list li strong { color: #fff; }
+  .tip-list li strong { color: #fff; font-weight: 600; }
 
-  .agency-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
-  .agency-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 15px; }
-  .agency-card .ag-name { font-family: var(--font-head); font-weight: 700; font-size: 13px; color: var(--accent); margin-bottom: 4px; }
-  .agency-card .ag-addr { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
-  .agency-card .ag-desc { font-size: 12px; color: #ccc; margin-bottom: 5px; }
-  .agency-card a { font-size: 11px; color: var(--accent2); text-decoration: none; }
+  /* ── AGENCY GRID ── */
+  .agency-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .agency-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    transition: border-color 0.2s, transform 0.18s;
+  }
+  .agency-card:hover { border-color: rgba(245,200,66,0.35); transform: translateY(-2px); }
+  .agency-card .ag-name {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--accent);
+    margin-bottom: 5px;
+    line-height: 1.3;
+  }
+  .agency-card .ag-addr {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .agency-card .ag-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .agency-card a { font-size: 13px; color: var(--accent2); text-decoration: none; font-weight: 500; }
+  .agency-card a:hover { text-decoration: underline; }
 
-  .portal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; }
-  .portal-item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px 13px; font-size: 12.5px; display: flex; align-items: flex-start; gap: 8px; }
-  .portal-item .pi { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
-  .portal-item a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  /* ── PORTAL GRID ── */
+  .portal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+  .portal-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 13px 16px;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.55;
+    transition: border-color 0.2s;
+  }
+  .portal-item:hover { border-color: rgba(245,200,66,0.3); }
+  .portal-item .pi { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .portal-item a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 14px; }
+  .portal-item a:hover { text-decoration: underline; }
 
-  .sub-label { font-family: var(--font-head); font-weight: 700; font-size: 12px; color: var(--accent); margin: 14px 0 8px; letter-spacing: 0.5px; text-transform: uppercase; }
+  /* ── SUB LABEL ── */
+  .sub-label {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--accent);
+    margin: 22px 0 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sub-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
 
-  footer { text-align: center; padding: 28px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); }
-  footer span { color: var(--accent); }
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    color: var(--muted);
+    font-size: 14px;
+    border-top: 1px solid var(--border);
+    line-height: 1.6;
+  }
+  footer span { color: var(--accent); font-weight: 600; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .agency-grid { grid-template-columns: 1fr; }
+    .rules-grid { grid-template-columns: 1fr; }
+    .portal-grid { grid-template-columns: 1fr; }
+    .toc a { font-size: 12px; padding: 7px 13px; }
+    .section-head { padding: 14px 16px; gap: 12px; }
+    .section-head .icon { width: 38px; height: 38px; font-size: 17px; }
+    .apply-card { padding: 16px; }
+    .main { gap: 32px; }
+  }
 </style>
 </head>
 <body>
@@ -110,25 +546,28 @@
   </div>
 </header>
 
-<nav class="toc">
-  <a href="#docs">Documents First</a>
-  <a href="#rules">Work Rules</a>
-  <a href="#apps">Apps — Zenjob & More</a>
-  <a href="#agencies">Staffing Agencies</a>
-  <a href="#warehouse">Warehouse & Logistics</a>
-  <a href="#production">Production Worker Jobs</a>
-  <a href="#supermarkets">Supermarkets</a>
-  <a href="#cleaning">Cleaning Jobs</a>
-  <a href="#restaurants">Restaurants</a>
-  <a href="#cafes">Cafés</a>
-  <a href="#bars">Bars & Clubs</a>
-  <a href="#seasonal">Seasonal Jobs</a>
-  <a href="#online">Online / Remote</a>
-  <a href="#babysit">Babysitting</a>
-  <a href="#other">Other Employers</a>
-  <a href="#portals">All Job Portals</a>
-  <a href="#tips">Pro Tips</a>
-</nav>
+<div class="toc-wrap">
+  <div class="toc-label">Jump to section</div>
+  <nav class="toc">
+    <a href="#docs"><span class="nav-icon">📋</span> Documents First</a>
+    <a href="#rules"><span class="nav-icon">⚖️</span> Work Rules</a>
+    <a href="#apps"><span class="nav-icon">⚡</span> Zenjob &amp; Apps</a>
+    <a href="#agencies"><span class="nav-icon">🏢</span> Staffing Agencies</a>
+    <a href="#warehouse"><span class="nav-icon">📦</span> Warehouse &amp; Logistics</a>
+    <a href="#production"><span class="nav-icon">🏭</span> Production Jobs</a>
+    <a href="#supermarkets"><span class="nav-icon">🛒</span> Supermarkets</a>
+    <a href="#cleaning"><span class="nav-icon">🧹</span> Cleaning Jobs</a>
+    <a href="#restaurants"><span class="nav-icon">🍽️</span> Restaurants</a>
+    <a href="#cafes"><span class="nav-icon">☕</span> Cafés</a>
+    <a href="#bars"><span class="nav-icon">🍺</span> Bars &amp; Clubs</a>
+    <a href="#seasonal"><span class="nav-icon">🌞</span> Seasonal</a>
+    <a href="#online"><span class="nav-icon">💻</span> Online / Remote</a>
+    <a href="#babysit"><span class="nav-icon">👶</span> Babysitting</a>
+    <a href="#other"><span class="nav-icon">🏙️</span> Other Employers</a>
+    <a href="#portals"><span class="nav-icon">🌐</span> All Portals</a>
+    <a href="#tips"><span class="nav-icon">💡</span> Pro Tips</a>
+  </nav>
+</div>
 
 <div class="main">
 
@@ -267,14 +706,14 @@
   </div>
   <div class="agency-grid">
     <div class="agency-card">
-      <div class="ag-name">Personalunion Siegen ⭐</div>
+      <div class="ag-name">Personalunion Siegen (PUS)</div>
       <div class="ag-addr">📍 Friedrichstraße 23, 57072 Siegen · Mon–Fri 7:30–17:00</div>
       <div class="ag-desc">Local Siegen agency with strong reviews. Fast placement in industry, logistics, and production roles. Walk in or call directly. Tel: 0271 387870</div>
       <a href="https://personalunion.de" target="_blank">personalunion.de →</a>
     </div>
     <div class="agency-card">
-      <div class="ag-name">perso concept GmbH ⭐</div>
-      <div class="ag-addr">📍 Siegen city — confirmed active 2026</div>
+      <div class="ag-name">perso concept GmbH </div>
+      <div class="ag-addr">📍 Spandauer Str. 34, 57072 Siegen</div>
       <div class="ag-desc">Siegen-based agency specialising in temporary employment. Covers industry, production, logistics, and service. International-friendly reputation among local students.</div>
       <a href="https://persoconcept.de" target="_blank">persoconcept.de →</a>
     </div>
@@ -354,11 +793,12 @@
       <div class="company">BISON Polymers GmbH — Siegen-Weidenau</div>
       <p>Germany's only nitrile disposable glove manufacturer, based directly in Siegen-Weidenau. Many students from the university already work here. The company is actively growing and regularly hires production and warehouse helpers. Very international-friendly working environment. Free parking available. Located near the Weidenau Busbahnhof.</p>
       <p><strong>Address:</strong> Breite Straße 17, 57076 Siegen-Weidenau</p>
-      <p><strong>Apply via email:</strong> recruiting@bison-polymers.com </p>
+      <p><strong>Apply via email:</strong> recruiting@bison-polymers.com</p>
       <a href="https://bison-polymers.com/en/career-2/" target="_blank">Bison Polymers Careers →</a>
+      <div class="note"></div>
     </div>
     <div class="apply-card">
-      <div class="company">Amazon — Wenden (Gerlingen) CLOSE TO SIEGEN</div>
+      <div class="company">Amazon — Wenden (Gerlingen) ✅ CLOSE TO SIEGEN</div>
       <p>Amazon has a confirmed logistics and delivery station at <strong>Eisenstraße 2, 57482 Wenden</strong> — in the Gerlingen industrial area, approximately 25 minutes from Siegen. This is the closest Amazon location to you. No CV or prior experience required. Both full-time and part-time shifts are available.</p>
       <p><strong>Shuttle service:</strong> Amazon provides a shuttle bus from Kreuztal Bahnhof / Siegen to this site. Timetables are shared after successful registration.</p>
       <p><strong>Also apply via:</strong> Adecco, who manages staffing contracts for this site — see Section 4.</p>
@@ -405,6 +845,11 @@
 
   <div class="sub-label">Companies Confirmed to Hire in the Siegen Area</div>
   <div class="card-grid">
+    <div class="card">
+      <div class="card-name">BISON Polymers GmbH</div>
+      <div class="card-address">Breite Straße 17, 57076 Siegen-Weidenau</div>
+      <div class="card-tags"><span class="tag tag-green">Glove manufacturing</span><span class="tag tag-yellow">WhatsApp apply</span></div>
+    </div>
     <div class="card">
       <div class="card-name">SkinIdent GmbH</div>
       <div class="card-address">57080 Siegen (~6 km from city centre)</div>
@@ -601,7 +1046,7 @@
   </div>
   <hr class="divider">
   <div class="box-green">
-    <strong>Walk-in tip:</strong> Asian and South Asian restaurants (Indian, Korean, Chinese, Vietnamese, Japanese) are among the most accessible for international students. Dishwashing and kitchen helper roles rarely require German — just show up, be polite, and be available. For all restaurants, go on weekdays when there is less crowd and ask specifically for the owner or Betriebsleiter.
+    <strong>Walk-in tip:</strong> Asian and South Asian restaurants (Indian, Korean, Chinese, Vietnamese, Japanese) are among the most accessible for international students. Dishwashing and kitchen helper roles rarely require German — just show up, be polite, and be available. For all restaurants, go on weekdays when there will be less crowd and ask specifically for the owner or Betriebsleiter.
   </div>
 
   <div class="sub-label">Indian &amp; South Asian</div>
@@ -785,7 +1230,7 @@
   <hr class="divider">
   <div class="card-grid">
     <div class="apply-card">
-      <div class="company">City-Center(Löhr-Center) Shopping Mall</div>
+      <div class="company">Löhr-Center Shopping Mall</div>
       <p>Siegen's main shopping mall at Löhrstraße 40, 57072. Walk into every individual shop and ask for Aushilfe or Minijob work — H&amp;M, Primark, TK Maxx, Zara, and many smaller retailers. Especially effective before Christmas, Easter, and summer sale seasons when stores urgently need extra staff.</p>
       <div class="note">Best time to visit: October/November for Christmas hiring. Always bring printed copies of your CV.</div>
     </div>
