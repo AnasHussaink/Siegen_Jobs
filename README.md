@@ -54,3 +54,10 @@ Then visit `http://localhost:8000`.
 ## License
 
 See repository files for licensing information.
+
+
+## Development and quality
+
+[![Repository quality](https://github.com/AnasHussaink/Siegen_Jobs/actions/workflows/quality.yml/badge.svg)](https://github.com/AnasHussaink/Siegen_Jobs/actions/workflows/quality.yml)
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for branch/PR workflow, local checks and CI coverage.
